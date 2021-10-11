@@ -36,7 +36,7 @@
 }
 
 .sidebar-collapsed-width {
-  min-width: 60px;
+  min-width: 70px;
 }
 
 .sidebar-expanded-width {
@@ -57,4 +57,16 @@
 }
 .left-menu-icon:hover + .left-menu-tool-tip {
   display: inline-block;
+}
+
+.has-sub-menu {
+  overflow: hidden;
+}
+
+.has-sub-menu.is-expanded {
+  overflow: auto;
+}
+
+.has-sub-menu .menu-toggle-icon {
+  transition: transform 0.25s ease-in-out;
 }

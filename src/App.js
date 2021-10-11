@@ -1,8 +1,8 @@
 import './App.css';
 import DKSidebar from './Components/DKSidebar';
 import { useState } from 'react';
-import { DKIcons } from 'deskera-ui-library';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MENU_ITEMS from './Constants';
 
 function App() {
   const [state, setState] = useState(true)
@@ -14,26 +14,9 @@ function App() {
           height: "100vh",
         }}>
           <DKSidebar
-            items={[{
-              name: 'Home',
-              icon: DKIcons.white.ic_home,
-              route: '/home'
-            },{
-              name: 'Company',
-              icon: DKIcons.white.ic_company,
-              route: '/home'
-            },{
-              name: 'User',
-              icon: DKIcons.white.ic_user,
-              route: '/home'
-            },{
-              name: 'Settings',
-              icon: DKIcons.white.ic_settings,
-              route: '/home'
-            }
-            ]}
+            items={MENU_ITEMS}
             expandedWidth={230}
-            collapsedWidth={60}
+            collapsedWidth={70}
             tenantList={[{
               id: 111,
               name: 'Adarsh Org'
