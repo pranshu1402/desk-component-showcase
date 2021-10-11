@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.bg-app {
+  background-color: #3f0e40;
+}
+.bg-button {
+  background-color: #651866;
+}
+.d-flex {
+  display: flex;
+}
+.bg-app{
+  background-color: rgb(35, 39, 42);
+}
+.bg-button{
+  background-color: rgb(114, 137, 218);
+}
