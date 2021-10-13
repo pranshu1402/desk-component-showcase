@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { DKIcons, DKIcon, DKLine, DKSpaceV } from "deskera-ui-library";
-import "../../styles/DKSidebar.css";
+import "./DKSidebar.css";
 import { DkSideBarItem } from "./DKSidebarItem";
 import { TenantController } from "./DKTenantController";
 
@@ -96,9 +96,13 @@ function DKSidebar(props) {
         />
         <DKSpaceV value={15} />
         <div
-          className={`p-h-m border-box parent-height parent-width ${props.isMenuExpanded ? "show" : "hide"}-scroll-bar`}
+          className={`column p-h-m border-box parent-width ${
+            props.isMenuExpanded ? "show" : "hide"
+          }-scroll-bar`}
           style={{
             overflowY: "auto",
+            overflowX: props.isMenuExpanded ? "hidden" : "visible",
+            flexGrow: 1,
           }}
         >
           {props.menuItemList.map((item, index) =>

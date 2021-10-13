@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
-import {
-  DKIcons,
-  DKIcon,
-  DKLine,
-  DKSpaceV,
-} from "deskera-ui-library";
-import "../../styles/DKSidebar.css";
+import { DKIcons, DKIcon, DKLine, DKSpaceV } from "deskera-ui-library";
+import "./DKSidebar.css";
 import { DkSideBarItem, ISidebarItem } from "./DKSidebarItem";
 import { TenantController } from "./DKTenantController";
-
 
 export interface IDKSidebarProps {
   className?: string;
@@ -22,7 +16,7 @@ export interface IDKSidebarProps {
   onSaveNewTenantTapped: (newOrgName: string) => void;
   onExpandCollapse: (flag: boolean) => void;
   itemRenderer?: (item: ISidebarItem) => void;
-  selectedTenantDetails: { tenantName: string, id: string };
+  selectedTenantDetails: { tenantName: string; tenantId: string };
 }
 
 function DKSidebar(props: IDKSidebarProps) {
@@ -55,14 +49,16 @@ function DKSidebar(props: IDKSidebarProps) {
       const tabIndexes = activeTabId.split("_");
       /* getting tab id's for all levels */
       tabIndexes.reduce((parentTabId, currentTabIndex) => {
-        const currentTabId = parentTabId ? `${parentTabId}_${currentTabIndex}` : `${currentTabIndex}`;
+        const currentTabId = parentTabId
+          ? `${parentTabId}_${currentTabIndex}`
+          : `${currentTabIndex}`;
         newCurrentMenuIndex.push(currentTabId);
         return currentTabId;
       }, "");
       setActiveMenuItemId(activeTabId);
       setExpandedItemsId(newCurrentMenuIndex);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -127,7 +123,7 @@ function DKSidebar(props: IDKSidebarProps) {
               isSidebarCollapsed={!props.isMenuExpanded}
               onLinkClick={(tabId: string) => {
                 setActiveMenuItemId(tabId);
-                
+
                 /* RESET EXPANDED MENUS: AND ONLY OPEN THE ONE WITH ACTIVE LINK
                 
                 const newCurrentMenuIndex = [];
@@ -142,15 +138,15 @@ function DKSidebar(props: IDKSidebarProps) {
               onToggleSubMenu={(tabId: string) => {
                 const newCurrentMenuIndex = [];
                 let isExisting = false;
-                expandedItemsId.forEach(expandedTabId => {
-                  if(expandedTabId === tabId) {
+                expandedItemsId.forEach((expandedTabId) => {
+                  if (expandedTabId === tabId) {
                     isExisting = true;
                   } else {
                     newCurrentMenuIndex.push(expandedTabId);
                   }
                 });
 
-                if(!isExisting) {
+                if (!isExisting) {
                   newCurrentMenuIndex.push(tabId);
                 }
 

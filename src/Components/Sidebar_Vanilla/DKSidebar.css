@@ -1,0 +1,75 @@
+.bottom-0 {
+  bottom: 0;
+}
+
+.dk-sidebar {
+  transition: width 0.5s;
+}
+.dk-sidebar-toggle {
+  transition: left 0.5s;
+}
+.dk-sidebar-menu-item {
+  transition: display 0.5s;
+}
+
+.expandable-button {
+  visibility: visible;
+}
+.dk-sidebar:hover .expandable-button {
+  visibility: visible;
+}
+
+.dk-sidebar-arrow-icon {
+  transition: transform 0.5s ease-out;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.rotate-360 {
+  transform: rotate(360deg);
+}
+
+.sidebar-transition-overflow {
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+.sidebar-collapsed-width {
+  min-width: 60px;
+}
+
+.sidebar-expanded-width {
+  width: 230px;
+}
+
+.left-menu-button {
+  text-decoration: none;
+}
+
+.active-menu-button,
+.left-menu-button:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.left-menu-tool-tip {
+  display: none;
+}
+.left-menu-icon:hover + .left-menu-tool-tip {
+  display: inline-block;
+}
+
+.has-sub-menu {
+  overflow: visible hidden;
+}
+
+.sub-menu-items {
+  overflow-y: hidden;
+}
+
+.has-sub-menu.is-expanded .sub-menu-items {
+  overflow-y: auto;
+}
+
+.has-sub-menu .menu-toggle-icon {
+  transition: transform 0.3s ease-in-out;
+}
