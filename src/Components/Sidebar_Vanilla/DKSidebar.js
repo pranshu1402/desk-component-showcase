@@ -4,6 +4,19 @@ import "./DKSidebar.css";
 import { DkSideBarItem } from "./DKSidebarItem";
 import { TenantController } from "./DKTenantController";
 
+/* PROPS:
+  collapsedWidth : Number
+  expandedWidth : Number
+  menuItemList : [{icon, name, route?, externalRoute?, subItems?: menuItemList[], className, }]  // provide either route/externalRoute/subItems for a menuItems
+  tenantList: [{tenantName, ...}]
+  isMenuExpanded: boolean
+  selectedTenantDetails: {tenantName, ...}
+  onAddNewTenantTapped?: function // for customizing behaviour on click addNewOrg button in org list picker
+  onSaveNewTenantTapped: function
+  onTenantSelect: function
+  onExpandCollapse: function
+*/
+
 function DKSidebar(props) {
   const [activeMenuItemId, setActiveMenuItemId] = useState("0");
   const [expandedItemsId, setExpandedItemsId] = useState(["0"]);
