@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { API_URLS, MENU_ITEMS } from "../Constants";
-import DKSidebar from "./Sidebar/DKSidebar";
-import DKAddTenant from "./Sidebar/DKAddTenant";
+import DKSidebar from "./Sidebar_Vanilla/DKSidebar";
+import DKAddTenant from "./Sidebar_Vanilla/DKAddTenant";
 
 const Playground = () => {
     const [isMenuExpanded, setIsMenuExpanded] = useState(true);
