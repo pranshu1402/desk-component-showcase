@@ -23,6 +23,7 @@ const Playground = () => {
     }
   
     function addNewTenant(newOrgName) {
+      console.log('inside add new tenant call');
       fetch(`${API_URLS.BASE_URL}${API_URLS.CREATE_NEW_ORG}`, {
         method: "POST",
         credentials: "include",
@@ -84,7 +85,7 @@ const Playground = () => {
           /* FOR CUSTOMIZING ADD_NEW_ORG UX 
             onAddNewTenantTapped={() => {
               setShowAddOrgPopup(true);
-            }} 
+            }}
           */
           onSaveNewTenantTapped={addNewTenant}
           onTenantSelect={(newTenantDetails: any) => {
@@ -102,7 +103,10 @@ const Playground = () => {
             onCancel={() => {
               setShowAddOrgPopup(false);
             }}
-            onSaveNewTenantTapped={addNewTenant}
+            onSaveNewTenantTapped={(newTenantName) => {
+              setShowAddOrgPopup(false);
+              addNewTenant(newTenantName);
+            }}
           />
         ) : null}
       </div>

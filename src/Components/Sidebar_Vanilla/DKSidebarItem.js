@@ -88,8 +88,9 @@ export const DkSideBarItem = (props) => {
           )}
         </div>
         <div
-          className="width-90 sub-menu-items hide-scroll-bar"
+          className="parent-width border-box sub-menu-items hide-scroll-bar"
           style={{
+            paddingLeft: isSidebarCollapsed ? 6 : 32,
             maxHeight: isExpanded ? 500 : 0,
             transition: "max-height 0.3s ease-in-out",
           }}

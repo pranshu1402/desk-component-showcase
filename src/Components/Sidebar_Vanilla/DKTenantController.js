@@ -16,7 +16,7 @@ export const TenantController = (props) => {
     return (
       <>
         <div
-          className="row cursor-hand border-radius-m p-v-s text-white justify-content-left"
+          className="row cursor-hand border-radius-m p-h-m p-v-s text-white justify-content-left"
           style={{
             pointerEvents: showListPicker ? "none" : "all",
           }}

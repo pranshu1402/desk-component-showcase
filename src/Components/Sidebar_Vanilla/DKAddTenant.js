@@ -1,19 +1,35 @@
-import { useState } from "react";
-import { DKButton, DKLabel, DKInput, getCapitalized } from "deskera-ui-library";
+import { useState, useEffect } from "react";
+import { DKButton, DKLabel, DKInput, getCapitalized, INPUT_TYPE, INPUT_VIEW_DIRECTION } from "deskera-ui-library";
 
 const DKAddTenant = (props) => {
   const [newOrgName, setNewOrgName] = useState("");
   const [saveOrgTapped, setSaveOrgTapped] = useState(false);
 
-  function saveButtonTapped() {
+  useEffect(() => {
+    document.addEventListener("keydown", bindEnter);
+
+    return () => {
+      document.removeEventListener("keydown", bindEnter);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newOrgName]);
+
+  const bindEnter = (event) => {
+		event = event || window.event;
+		if (event.key === "Enter") {
+			saveButtonTapped();
+		}
+  };
+
+  const saveButtonTapped = () => {
     setSaveOrgTapped(true);
 
-    if (!newOrgName.trim()) return;
-
-    props.onSaveNewTenantTapped(newOrgName);
+    if (newOrgName?.trim()) {
+      props.onSaveNewTenantTapped(getCapitalized(newOrgName));
+    }
   }
 
-  function cancelTapped() {
+  const cancelTapped = () => {
     setNewOrgName("");
     props.onCancel();
   }
@@ -40,18 +56,17 @@ const DKAddTenant = (props) => {
         </div>
 
         <div className="column mt-r parent-width">
-          <div className="row " style={{ alignItems: "flex-start" }}>
+          <div className="row" style={{ alignItems: "flex-start" }}>
             <DKInput
               autoFocus={true}
+              type={INPUT_TYPE.TEXT}
               className="parent-width"
               title="Company name"
-              required={true}
+              required
               value={newOrgName}
-              direction="vertical"
-              onChange={(newValue) => {
-                setNewOrgName(getCapitalized(newValue));
-              }}
-              canValidate={saveOrgTapped && !newOrgName?.trim()}
+              direction={INPUT_VIEW_DIRECTION.VERTICAL}
+              onChange={setNewOrgName}
+              canValidate={saveOrgTapped}
             />
           </div>
         </div>

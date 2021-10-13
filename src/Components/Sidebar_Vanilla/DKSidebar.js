@@ -1,10 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  DKIcons,
-  DKIcon,
-  DKLine,
-  DKSpaceV,
-} from "deskera-ui-library";
+import { DKIcons, DKIcon, DKLine, DKSpaceV } from "deskera-ui-library";
 import "../../styles/DKSidebar.css";
 import { DkSideBarItem } from "./DKSidebarItem";
 import { TenantController } from "./DKTenantController";
@@ -39,20 +34,22 @@ function DKSidebar(props) {
       const tabIndexes = activeTabId.split("_");
       /* getting tab id's for all levels */
       tabIndexes.reduce((parentTabId, currentTabIndex) => {
-        const currentTabId = parentTabId ? `${parentTabId}_${currentTabIndex}` : `${currentTabIndex}`;
+        const currentTabId = parentTabId
+          ? `${parentTabId}_${currentTabIndex}`
+          : `${currentTabIndex}`;
         newCurrentMenuIndex.push(currentTabId);
         return currentTabId;
       }, "");
       setActiveMenuItemId(activeTabId);
       setExpandedItemsId(newCurrentMenuIndex);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div
       id="dk-sidebar"
-      className={`dk-sidebar parent-height bg-app p-m pb-l column justify-content-between z-index-4 flex-shrink-0 ${props?.className}`}
+      className={`dk-sidebar parent-height bg-app pt-m pb-l column justify-content-between z-index-4 flex-shrink-0 ${props?.className}`}
       style={{
         width: props.isMenuExpanded
           ? props.expandedWidth
@@ -98,51 +95,47 @@ function DKSidebar(props) {
           }}
         />
         <DKSpaceV value={15} />
-        {props.menuItemList.map((item, index) =>
-          props.itemRenderer ? (
-            props.itemRenderer(item)
-          ) : (
-            <DkSideBarItem
-              {...item}
-              level={0}
-              tabId={`${index}`}
-              activeMenuItemId={activeMenuItemId}
-              expandedItemsId={expandedItemsId}
-              isSidebarCollapsed={!props.isMenuExpanded}
-              onLinkClick={(tabId) => {
-                setActiveMenuItemId(tabId);
-                
-                /* RESET EXPANDED MENUS: AND ONLY OPEN THE ONE WITH ACTIVE LINK
-                
-                const newCurrentMenuIndex = [];
-                const tabIndexes = tabId.split("_");
-                tabIndexes.reduce((parentTabId, currentTabIndex) => {
-                  const currentTabId = parentTabId ? `${parentTabId}_${currentTabIndex}` : `${currentTabIndex}`;
-                  newCurrentMenuIndex.push(currentTabId);
-                  return currentTabId;
-                }, "");
-                setCurrentMenuIndex(newCurrentMenuIndex); */
-              }}
-              onToggleSubMenu={(tabId) => {
-                const newCurrentMenuIndex = [];
-                let isExisting = false;
-                expandedItemsId.forEach(expandedTabId => {
-                  if(expandedTabId === tabId) {
-                    isExisting = true;
-                  } else {
-                    newCurrentMenuIndex.push(expandedTabId);
+        <div
+          className={`p-h-m border-box parent-height parent-width ${props.isMenuExpanded ? "show" : "hide"}-scroll-bar`}
+          style={{
+            overflowY: "auto",
+          }}
+        >
+          {props.menuItemList.map((item, index) =>
+            props.itemRenderer ? (
+              props.itemRenderer(item)
+            ) : (
+              <DkSideBarItem
+                {...item}
+                level={0}
+                tabId={`${index}`}
+                activeMenuItemId={activeMenuItemId}
+                expandedItemsId={expandedItemsId}
+                isSidebarCollapsed={!props.isMenuExpanded}
+                onLinkClick={(tabId) => {
+                  setActiveMenuItemId(tabId);
+                }}
+                onToggleSubMenu={(tabId) => {
+                  const newCurrentMenuIndex = [];
+                  let isExisting = false;
+                  expandedItemsId.forEach((expandedTabId) => {
+                    if (expandedTabId === tabId) {
+                      isExisting = true;
+                    } else {
+                      newCurrentMenuIndex.push(expandedTabId);
+                    }
+                  });
+
+                  if (!isExisting) {
+                    newCurrentMenuIndex.push(tabId);
                   }
-                });
 
-                if(!isExisting) {
-                  newCurrentMenuIndex.push(tabId);
-                }
-
-                setExpandedItemsId(newCurrentMenuIndex);
-              }}
-            />
-          )
-        )}
+                  setExpandedItemsId(newCurrentMenuIndex);
+                }}
+              />
+            )
+          )}
+        </div>
       </div>
     </div>
   );
