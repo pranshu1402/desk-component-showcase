@@ -1,10 +1,20 @@
 import { DKIcons } from "deskera-ui-library";
 
+/* 
+  MENU_ITEM: {
+    name,
+    icon,
+    route?,
+    externalRoute?,
+    subItems?,
+  }
+*/
+
 const MENU_ITEMS = [
   {
     name: "Home",
     icon: DKIcons.white.ic_home,
-    route: "/",
+    externalRoute: "http://google.com"
   },
   {
     name: "Company",
@@ -51,10 +61,16 @@ const MENU_ITEMS = [
             route: "/home-7",
           },
         ],
-        // route: "/home-6"
       },
     ],
   },
 ];
 
-export default MENU_ITEMS;
+const API_URLS = {
+  BASE_URL: `https://api-dev.deskera.xyz`,
+  GET_ALL_TENANTS: `/v1/users/tenants`,
+  GET_TENANT_DETAILS: `/v1/tenants/details`,
+  CREATE_NEW_ORG: `/v1/tenants/**/organisationwithoutsetup`,
+}
+
+export {MENU_ITEMS, API_URLS};

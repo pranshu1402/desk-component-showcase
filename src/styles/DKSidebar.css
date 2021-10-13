@@ -3,32 +3,32 @@
     bottom: 0;
   }
 
-  .dk-sidebar {
-    transition: width 0.3s;
-  }
-  .dk-sidebar-toggle {
-    transition: left 0.3s;
-  }
-  .dk-sidebar-menu-item {
-    transition: display 0.3s;
-  }
+.dk-sidebar {
+  transition: width 0.5s;
+}
+.dk-sidebar-toggle {
+  transition: left 0.5s;
+}
+.dk-sidebar-menu-item {
+  transition: display 0.5s;
+}
 
-  .expandable-button {
-    visibility: visible;
-  }
-  .dk-sidebar:hover .expandable-button {
-    visibility: visible;
-  }
+.expandable-button {
+  visibility: visible;
+}
+.dk-sidebar:hover .expandable-button {
+  visibility: visible;
+}
 
-  .dk-sidebar-arrow-icon {
-    transition: transform 0.3s ease-out;
-  }
-  .rotate-180 {
-    transform: rotate(180deg);
-  }
-  .rotate-360 {
-    transform: rotate(360deg);
-  }
+.dk-sidebar-arrow-icon {
+  transition: transform 0.5s ease-out;
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.rotate-360 {
+  transform: rotate(360deg);
+}
 
 .sidebar-transition-overflow {
   transition: 0.5s;
@@ -36,7 +36,7 @@
 }
 
 .sidebar-collapsed-width {
-  min-width: 70px;
+  min-width: 60px;
 }
 
 .sidebar-expanded-width {
@@ -45,6 +45,7 @@
 
 .left-menu-button {
   text-decoration: none;
+  padding-left: 6px;
 }
 
 .active-menu-button,
@@ -60,13 +61,17 @@
 }
 
 .has-sub-menu {
-  overflow: hidden;
+  overflow: visible hidden;
 }
 
-.has-sub-menu.is-expanded {
-  overflow: auto;
+.sub-menu-items {
+  overflow-y: hidden;
+}
+
+.has-sub-menu.is-expanded .sub-menu-items {
+  overflow-y: auto;
 }
 
 .has-sub-menu .menu-toggle-icon {
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }

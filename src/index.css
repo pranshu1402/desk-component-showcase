@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
 }
 
 code {
@@ -20,9 +21,10 @@ code {
 .d-flex {
   display: flex;
 }
-.bg-app{
+/* test colors:
+ .bg-app{
   background-color: rgb(35, 39, 42);
 }
 .bg-button{
   background-color: rgb(114, 137, 218);
-}
+} */
