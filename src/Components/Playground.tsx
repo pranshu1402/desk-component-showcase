@@ -78,8 +78,6 @@ const Playground = () => {
       }}
     >
       <DKSidebar
-        collapsedWidth={70}
-        expandedWidth={230}
         menuItemList={MENU_ITEMS}
         tenantList={tenantList}
         isMenuExpanded={isMenuExpanded}

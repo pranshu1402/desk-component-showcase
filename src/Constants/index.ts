@@ -64,6 +64,31 @@ const MENU_ITEMS = [
       },
     ],
   },
+  {
+    name: "Menu 8",
+    icon: DKIcons.white.ic_company,
+    route: "/home-8",
+  },
+  {
+    name: "Menu 9",
+    icon: DKIcons.white.ic_company,
+    route: "/home-9",
+  },
+  {
+    name: "Menu 10",
+    icon: DKIcons.white.ic_company,
+    route: "/home-10",
+  },
+  {
+    name: "Menu 11",
+    icon: DKIcons.white.ic_company,
+    route: "/home-11",
+  },
+  {
+    name: "Menu 12",
+    icon: DKIcons.white.ic_company,
+    route: "/home-12",
+  },
 ];
 
 const API_URLS = {
