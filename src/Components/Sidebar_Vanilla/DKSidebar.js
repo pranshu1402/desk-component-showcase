@@ -5,8 +5,6 @@ import { DkSideBarItem } from "./DKSidebarItem";
 import { TenantController } from "./DKTenantController";
 
 /* PROPS:
-  collapsedWidth : Number
-  expandedWidth : Number
   menuItemList : [{icon, name, route?, externalRoute?, subItems?: menuItemList[], className, }]  // provide either route/externalRoute/subItems for a menuItems
   tenantList: [{tenantName, ...}]
   isMenuExpanded: boolean
@@ -20,6 +18,10 @@ import { TenantController } from "./DKTenantController";
 function DKSidebar(props) {
   const [activeMenuItemId, setActiveMenuItemId] = useState("0");
   const [expandedItemsId, setExpandedItemsId] = useState(["0"]);
+
+  /* constants */
+  const collapsedMenuWidth = 60,
+    expandedMenuWidth = 230;
 
   function getActiveTabId(menuItems) {
     let activeTabId = null;
@@ -62,11 +64,9 @@ function DKSidebar(props) {
   return (
     <div
       id="dk-sidebar"
-      className={`dk-sidebar parent-height bg-app pt-m pb-l column justify-content-between z-index-4 flex-shrink-0 ${props?.className}`}
+      className={`dk-sidebar screen-height bg-app pt-m pb-l column justify-content-between z-index-4 flex-shrink-0 ${props?.className}`}
       style={{
-        width: props.isMenuExpanded
-          ? props.expandedWidth
-          : props.collapsedWidth,
+        width: props.isMenuExpanded ? expandedMenuWidth : collapsedMenuWidth,
       }}
     >
       <div
@@ -74,9 +74,8 @@ function DKSidebar(props) {
         style={{
           position: "fixed",
           left:
-            (props.isMenuExpanded
-              ? props.expandedWidth
-              : props.collapsedWidth) - 20,
+            (props.isMenuExpanded ? expandedMenuWidth : collapsedMenuWidth) -
+            20,
           top: 45,
         }}
         onClick={() => {

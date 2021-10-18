@@ -3,13 +3,13 @@
 }
 
 .dk-sidebar {
-  transition: width 0.5s;
+  transition: width 0.3s;
 }
 .dk-sidebar-toggle {
-  transition: left 0.5s;
+  transition: left 0.3s;
 }
 .dk-sidebar-menu-item {
-  transition: display 0.5s;
+  transition: display 0.3s;
 }
 
 .expandable-button {
@@ -20,7 +20,7 @@
 }
 
 .dk-sidebar-arrow-icon {
-  transition: transform 0.5s ease-out;
+  transition: transform 0.3s ease-out;
 }
 .rotate-180 {
   transform: rotate(180deg);
@@ -30,7 +30,7 @@
 }
 
 .sidebar-transition-overflow {
-  transition: 0.5s;
+  transition: 0.3s;
   overflow: hidden;
 }
 
@@ -54,20 +54,22 @@
 .left-menu-tool-tip {
   display: none;
 }
+
 .left-menu-icon:hover + .left-menu-tool-tip {
   display: inline-block;
 }
 
 .has-sub-menu {
-  overflow: visible hidden;
+  overflow: visible;
 }
 
-.sub-menu-items {
+.has-sub-menu .sub-menu-items {
   overflow-y: hidden;
 }
 
+.has-sub-menu.is-expanded,
 .has-sub-menu.is-expanded .sub-menu-items {
-  overflow-y: auto;
+  overflow: hidden visible;
 }
 
 .has-sub-menu .menu-toggle-icon {

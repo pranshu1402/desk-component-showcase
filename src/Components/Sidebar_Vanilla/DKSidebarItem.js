@@ -25,14 +25,13 @@ export const DkSideBarItem = (props) => {
 
   return subItems?.length ? (
     <div
-      className={`column align-items-end parent-width has-sub-menu hide-scroll-bar ${
+      className={`column align-items-end parent-width flex-shrink-0 has-sub-menu ${
         isExpanded ? "is-expanded" : ""
       }`}
     >
       <div
         className={`row p-v-m pl-s m-v-xs mb-r border-radius-m left-menu-button cursor-hand
-            ${!isExpanded && hasActiveMenu ? "active-menu-button" : ""}
-            ${isSidebarCollapsed ? "p-h-0 justify-content-center" : ""} ${
+            ${!isExpanded && hasActiveMenu ? "active-menu-button" : ""} ${
           props?.className || ""
         }`}
         onClick={() => onToggleSubMenu(tabId)}
@@ -95,8 +94,8 @@ export const DkSideBarItem = (props) => {
       <div
         className="parent-width border-box sub-menu-items hide-scroll-bar"
         style={{
-          paddingLeft: isSidebarCollapsed ? 6 : 32,
-          maxHeight: isExpanded ? 500 : 0,
+          paddingLeft: isSidebarCollapsed ? 0 : 32,
+          maxHeight: isExpanded ? "100vh" : 0,
           transition: "max-height 0.3s ease-in-out",
         }}
       >
@@ -118,8 +117,7 @@ export const DkSideBarItem = (props) => {
     <Link
       className={`row p-v-m pl-s m-v-xs border-radius-m left-menu-button ${
         isActive ? "active-menu-button" : ""
-      } ${isSidebarCollapsed ? "p-h-0 justify-content-center" : ""}
-      ${props?.className || ""}`}
+      } ${props?.className || ""}`}
       to={externalRoute ? { pathname: externalRoute } : route}
       target={externalRoute ? "_blank" : "_self"}
       onClick={externalRoute ? () => {} : () => onLinkClick(tabId)}
